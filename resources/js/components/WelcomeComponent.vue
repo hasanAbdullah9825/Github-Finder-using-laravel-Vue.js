@@ -87,7 +87,7 @@
 
 <script>
 	export default {
-		name: "WelcomeComponent",
+		
 		data() {
 			return {
 				form: new Form({

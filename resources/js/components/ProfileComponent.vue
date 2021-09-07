@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="container-fluid">
+		<div class="container-fluid" v-if="showOutput">
 			<div class="row">
 				<nav-bar
 					@all-repository="getAllRepository"
@@ -30,16 +30,16 @@
 					</div>
 				</div>
 			</div>
+			<footer class="footer text-center text-white bg-light ">
+				<div class="text-center p-3 bg-primary">
+					© 2021 Copyright:
+					<a class="text-white" href="#">Github Inc</a>
+				</div>
+			</footer>
 		</div>
-		<footer class="text-center text-white bg-light ">
- 
-  <!-- Copyright -->
-  <div class="text-center p-3 bg-primary" >
-    © 2021 Copyright:
-    <a class="text-white" href="https://mdbootstrap.com/">Github Inc</a>
-  </div>
-  <!-- Copyright -->
-</footer>
+		<div v-else>
+			<pre-loader> </pre-loader>
+		</div>
 	</div>
 </template>
 
@@ -48,20 +48,22 @@
 	import AllRepository from "./AllRepository.vue";
 	import NavBar from "./NavBar.vue";
 	import PinnedRepository from "./PinnedRepository.vue";
+	import PreLoader from "./PreLoader.vue";
 
 	export default {
 		components: {
 			SideBar,
 			AllRepository,
 			NavBar,
-			PinnedRepository
+			PinnedRepository,
+			PreLoader
 		},
 		data() {
 			return {
 				userdata: [],
 				allRepositoryData: [],
 				usersPinnedRepositories: [],
-
+				showOutput: false,
 				form: new Form({
 					username: ""
 				}),
@@ -77,6 +79,9 @@
 						this.userdata = response.data.userDetails;
 						this.allRepositoryData = response.data.usersAllRepository;
 						this.usersPinnedRepositories = response.data.usersPinRepository;
+					})
+					.then(() => {
+						this.showOutput = true;
 					});
 			},
 

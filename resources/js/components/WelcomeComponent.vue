@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
-		<div class="row ">
-			<div class="col-md-6  ">
+		<div class="row justify-content-center">
+			<div class="col-md-4 ">
 				<div class="row justify-content-center ">
 					<h1 class="text-justify font-weight-bold m-5">GitHub Finder!</h1>
 					<div class="card my-5">
@@ -43,14 +43,14 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<div class="row justify-content-center">
-					<div class="card m-5" v-if="items.length !== 0">
+			<div class="col-md-8" v-if="items.length !== 0">
+				<div class="row">
+					<div style="width:100%;" class="card m-5" >
 						<div class="card-header bg-success">
 							<h3 class="text-light font-weight-bold">Here is your result!</h3>
 						</div>
 
-						<div class="card-body ">
+						<div class="card-body">
 							<div class="scroll">
 								<table class="table table-bordered table-striped  ">
 									<thead>

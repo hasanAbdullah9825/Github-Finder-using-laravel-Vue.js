@@ -2248,8 +2248,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['userdata']
+  props: ["userdata"]
 });
 
 /***/ }),
@@ -2322,6 +2334,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavBar_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavBar.vue */ "./resources/js/components/NavBar.vue");
 /* harmony import */ var _PinnedRepository_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PinnedRepository.vue */ "./resources/js/components/PinnedRepository.vue");
 /* harmony import */ var _PreLoader_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PreLoader.vue */ "./resources/js/components/PreLoader.vue");
+//
+//
 //
 //
 //
@@ -39250,10 +39264,6 @@ var render = function() {
     "nav",
     { staticClass: "navbar navbar-expand-lg navbar-light bg-light" },
     [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
       _c(
         "div",
         {
@@ -39262,6 +39272,42 @@ var render = function() {
         },
         [
           _c("ul", { staticClass: "navbar-nav mr-auto" }, [
+            _c(
+              "li",
+              { staticClass: "nav-item" },
+              [
+                _c(
+                  "router-link",
+                  { staticClass: "nav-link", attrs: { to: "/" } },
+                  [
+                    _c("h4", { staticClass: "font-weight-bold" }, [
+                      _vm._v("Home")
+                    ])
+                  ]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("li", { staticClass: "nav-item" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "nav-link",
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("showPinnedRepository")
+                    }
+                  }
+                },
+                [
+                  _c("h4", { staticClass: "font-weight-bold" }, [
+                    _vm._v("Overview")
+                  ])
+                ]
+              )
+            ]),
+            _vm._v(" "),
             _c("li", { staticClass: "nav-item" }, [
               _c(
                 "a",
@@ -39276,16 +39322,18 @@ var render = function() {
                 [
                   _c("h4", { staticClass: "font-weight-bold" }, [
                     _vm._v(
-                      "Repository (" + _vm._s(_vm.userdata.public_repos) + ")"
+                      "\n\t\t\t\t\t\tRepository (" +
+                        _vm._s(_vm.userdata.public_repos) +
+                        ")\n\t\t\t\t\t"
                     )
                   ])
                 ]
               )
             ]),
             _vm._v(" "),
-            _vm._m(2),
+            _vm._m(0),
             _vm._v(" "),
-            _vm._m(3)
+            _vm._m(1)
           ])
         ]
       )
@@ -39293,34 +39341,6 @@ var render = function() {
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "navbar-brand", attrs: { href: "#" } }, [
-      _c("h4", [_vm._v("Profile")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -39464,7 +39484,10 @@ var render = function() {
             [
               _c("nav-bar", {
                 attrs: { userdata: _vm.userdata },
-                on: { "all-repository": _vm.getAllRepository }
+                on: {
+                  "all-repository": _vm.getAllRepository,
+                  showPinnedRepository: _vm.getPinnedRepository
+                }
               })
             ],
             1
@@ -39635,8 +39658,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row " }, [
-      _c("div", { staticClass: "col-md-6  " }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-4 " }, [
         _c("div", { staticClass: "row justify-content-center " }, [
           _c("h1", { staticClass: "text-justify font-weight-bold m-5" }, [
             _vm._v("GitHub Finder!")
@@ -39735,63 +39758,67 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c("div", { staticClass: "row justify-content-center" }, [
-          _vm.items.length !== 0
-            ? _c("div", { staticClass: "card m-5" }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "card-body " }, [
-                  _c("div", { staticClass: "scroll" }, [
-                    _c(
-                      "table",
-                      { staticClass: "table table-bordered table-striped  " },
-                      [
-                        _vm._m(2),
-                        _vm._v(" "),
-                        _c(
-                          "tbody",
-                          _vm._l(_vm.items.items, function(item) {
-                            return _c("tr", { key: item.login }, [
-                              _c("td", [_vm._v(_vm._s(item.login))]),
-                              _vm._v(" "),
-                              _c("td", [
-                                _c("img", {
-                                  staticClass: "rounded-circle",
-                                  attrs: {
-                                    src: item.avatar_url,
-                                    width: "100",
-                                    height: "100"
-                                  }
-                                })
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "td",
-                                [
-                                  _c(
-                                    "router-link",
-                                    {
-                                      staticClass: "btn btn-primary bg-dark",
-                                      attrs: { to: "/profile/" + item.login }
-                                    },
-                                    [_vm._v("Details")]
-                                  )
-                                ],
-                                1
-                              )
-                            ])
-                          }),
-                          0
-                        )
-                      ]
-                    )
+      _vm.items.length !== 0
+        ? _c("div", { staticClass: "col-md-8" }, [
+            _c("div", { staticClass: "row" }, [
+              _c(
+                "div",
+                { staticClass: "card m-5", staticStyle: { width: "100%" } },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-body" }, [
+                    _c("div", { staticClass: "scroll" }, [
+                      _c(
+                        "table",
+                        { staticClass: "table table-bordered table-striped  " },
+                        [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c(
+                            "tbody",
+                            _vm._l(_vm.items.items, function(item) {
+                              return _c("tr", { key: item.login }, [
+                                _c("td", [_vm._v(_vm._s(item.login))]),
+                                _vm._v(" "),
+                                _c("td", [
+                                  _c("img", {
+                                    staticClass: "rounded-circle",
+                                    attrs: {
+                                      src: item.avatar_url,
+                                      width: "100",
+                                      height: "100"
+                                    }
+                                  })
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        staticClass: "btn btn-primary bg-dark",
+                                        attrs: { to: "/profile/" + item.login }
+                                      },
+                                      [_vm._v("Details")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ])
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ])
                   ])
-                ])
-              ])
-            : _vm._e()
-        ])
-      ])
+                ]
+              )
+            ])
+          ])
+        : _vm._e()
     ])
   ])
 }

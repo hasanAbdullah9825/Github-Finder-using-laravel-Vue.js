@@ -4,6 +4,7 @@
 			<div class="row">
 				<nav-bar
 					@all-repository="getAllRepository"
+					@showPinnedRepository="getPinnedRepository"
 					:userdata="userdata"
 				></nav-bar>
 			</div>
@@ -22,6 +23,7 @@
 					<pinned-repository
 						v-if="showPinnedRepository"
 						:usersPinnedRepositories="usersPinnedRepositories"
+						
 					></pinned-repository>
 
 					<div class="box p-2 m-3 ">

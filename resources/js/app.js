@@ -28,8 +28,9 @@ window.Vue = require("vue");
  */
 
 //vform
-import vform from "vform";
-window.Form = vform;
+ import vform from "vform";
+ window.Form = vform; 
+
 
 import VueRouter from "vue-router";
 

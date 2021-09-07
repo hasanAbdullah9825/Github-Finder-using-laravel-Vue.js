@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
+  
     return view('welcome');
 });
+
+Route::get('/get_github_userlist','GithubController@getGitUserList');
+Route::get('/get_github_user_details/{username}','GithubController@getGitUserDetails');
+

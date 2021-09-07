@@ -4,7 +4,6 @@
 			<div class="col-md-6  ">
 				<div class="row justify-content-center ">
 					<h1 class="text-justify font-weight-bold m-5">GitHub Finder!</h1>
-
 					<div class="card my-5">
 						<div class="card-header bg-success">
 							<h3 class="font-weight-bold text-light">
@@ -21,13 +20,21 @@
 										class="form-control"
 										v-model="form.username"
 										placeholder="Enter username"
-										required
+										name="username"
 									/>
+									<!-- <div style="color:red;font-weight:bold;" v-if="form.errors.has('username')" v-html="form.errors.get('username')" /> -->
+									<div
+										style="color:red;font-weight:bold;"
+										v-if="form.errors.has('username')"
+									>
+										{{ form.errors.get("username") }}
+									</div>
 								</div>
 
 								<button type="submit" class="btn btn-primary my-2">
 									Search
 								</button>
+
 								<button @click.prevent="reset" class="btn btn-warning">
 									Reset
 								</button>
@@ -54,7 +61,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr v-for="item in items" :key="item.login">
+										<tr v-for="item in items.items" :key="item.login">
 											<td>{{ item.login }}</td>
 
 											<td>
@@ -87,7 +94,6 @@
 
 <script>
 	export default {
-		
 		data() {
 			return {
 				form: new Form({
@@ -98,16 +104,23 @@
 		},
 
 		methods: {
+			// getResult() {
+			// 	console.log("getResult Method");
+			// 	this.items = [];
+			// 	fetch(`https://api.github.com/search/users?q=${this.form.username}`)
+			// 		.then(res => {
+			// 			return res.json();
+			// 		})
+			// 		.then(data => {
+			// 			this.items = data.items;
+			// 		});
+			// },
 			getResult() {
-				console.log("getResult Method");
 				this.items = [];
-				fetch(`https://api.github.com/search/users?q=${this.form.username}`)
-					.then(res => {
-						return res.json();
-					})
-					.then(data => {
-						this.items = data.items;
-					});
+				this.form.get("/get_github_userlist").then(res => {
+					this.items = res.data.allUserData;
+					//console.log(res.data.allUserData);
+				});
 			},
 			reset() {
 				this.items = [];

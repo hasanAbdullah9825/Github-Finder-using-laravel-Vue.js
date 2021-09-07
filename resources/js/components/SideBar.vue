@@ -6,7 +6,8 @@
 			width="200"
 			height="200"
 		/>
-		<h1>{{ userdata.login }}</h1>
+		<h1>{{userdata.name}}</h1>
+		<h3>{{ userdata.login }}</h3>
 		<h6>{{ userdata.bio }}</h6>
 
 		<div class="justify-content-center">

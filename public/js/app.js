@@ -2478,6 +2478,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["userdata"]
 });
@@ -39594,7 +39595,9 @@ var render = function() {
       attrs: { src: _vm.userdata.avatar_url, width: "200", height: "200" }
     }),
     _vm._v(" "),
-    _c("h1", [_vm._v(_vm._s(_vm.userdata.login))]),
+    _c("h1", [_vm._v(_vm._s(_vm.userdata.name))]),
+    _vm._v(" "),
+    _c("h3", [_vm._v(_vm._s(_vm.userdata.login))]),
     _vm._v(" "),
     _c("h6", [_vm._v(_vm._s(_vm.userdata.bio))]),
     _vm._v(" "),
